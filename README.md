@@ -74,6 +74,23 @@ p_politics
 
 
 
+
+```python
+p_music = len(music)/(len(politics) + len(music))
+```
+
+
+```python
+p_music
+```
+
+
+
+
+    0.5
+
+
+
 ### How do you think we should calculate: $ P(phrase | politics) $ ?
 
 
@@ -200,6 +217,42 @@ voc_all = voc_music.union(voc_pol)
 
 
 ```python
+voc_all
+```
+
+
+
+
+    {'a',
+     'agreed',
+     'arena',
+     'band',
+     'close',
+     'compromise',
+     'disagreed',
+     'election',
+     'for',
+     'lask',
+     'leaders',
+     'met',
+     'officials',
+     'on',
+     'out',
+     'played',
+     'popular',
+     'sold',
+     'song',
+     'sound',
+     'stadium',
+     'the',
+     'was',
+     'week',
+     'world'}
+
+
+
+
+```python
 total_vocab_count = len(voc_all)
 total_music_count = len(voc_music)
 total_politics_count = len(voc_pol)
@@ -300,7 +353,19 @@ likelihood_p = find_likelihood(total_politics_count,test_politic_word_count,1)
 
 
 ```python
-likelihood_p * 0.5  > likelihood_m * 0.5
+likelihood_not/(likelihood_not +likelihood_attending)
+```
+
+
+
+
+    0.17457886676875956
+
+
+
+
+```python
+likelihood_p * p_politics  > likelihood_m * p_music
 ```
 
 
@@ -312,13 +377,25 @@ likelihood_p * 0.5  > likelihood_m * 0.5
 
 
 ```python
-likelihood_p * 0.5 
+likelihood_p /(likelihood_m +likelihood_p)
 ```
 
 
 
 
-    8.744379488572475e-11
+    0.8097960075442886
+
+
+
+
+```python
+likelihood_m /(likelihood_m +likelihood_p)
+```
+
+
+
+
+    0.19020399245571137
 
 
 
@@ -358,6 +435,17 @@ The Bernoulli Naive Bayes Classifier: used when your features are binary (0 or 1
 There is also the Gaussian Naive Bayes Classifier, which assumes that the features that you are predicting based off of are normally distributed.
 
 
+### Pros:
+
+* It is an efficient way to predict class of test data set. It perform well in multi class prediction
+* When assumption of independence holds, a Naive Bayes classifier performs requires less training data and can perform better than models like logistic regression.
+* Performs better with categorical inputs. For numerical input, one has to assume a normal distribution.
+
+### Cons:
+
+* On the other side naive Bayes is also known as a bad estimator, so the probability outputs from predict_proba are not to be taken too seriously.
+* Another limitation of Naive Bayes is the assumption of independent predictors. In real life, it is almost impossible that we get a set of predictors which are completely independent.
+
 ### Using Naive Bayes in sklearn
 
 
@@ -370,6 +458,16 @@ model.predict(X_test)
 ```
 
 
-```python
-y_train = [1,0,0,0,1,1,1,1,1]
-```
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-54-cded6637d7bd> in <module>()
+          2 y_train = [1,0,0,0,1,1,1,1,1]
+          3 model = GaussianNB()
+    ----> 4 model.fit(X_train,y_train)
+          5 model.predict(X_test)
+
+
+    NameError: name 'X_train' is not defined
+
