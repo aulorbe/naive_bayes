@@ -36,6 +36,11 @@ test_statement_2 = 'officials met at the arena'
 
 <img src ="./resources/naive_bayes_icon.png">
 
+### Another way of looking at it
+<img src = "./resources/another_one.png">
+
+## So, in the context of our problem......
+
 
 
 #### $ P(politics | phrase) = \frac{P(phrase|politics)P(politics)}{P(phrase)}$
@@ -44,12 +49,7 @@ test_statement_2 = 'officials met at the arena'
 
 *where phrase is our test statement*
 
-
-```python
-#maximum a posterori
-```
-
-<img src = "./resources/solvingforyhat.png" width= "400">
+Estimating the parameters of our model (using Maximum a Posteriori):
 
 <img src = "./resources/solving_theta.png" width="400">
 
@@ -351,6 +351,10 @@ likelihood_p = find_likelihood(total_politics_count,test_politic_word_count,1)
 
 ### $ P(politics | article) = P(politics) x \prod_{i=1}^{d} P(word_{i} | politics) $
 
+Deteriming the winner of our model:
+
+<img src = "./resources/solvingforyhat.png" width= "400">
+
 
 ```python
 likelihood_not/(likelihood_not +likelihood_attending)
@@ -434,6 +438,7 @@ The Bernoulli Naive Bayes Classifier: used when your features are binary (0 or 1
 
 There is also the Gaussian Naive Bayes Classifier, which assumes that the features that you are predicting based off of are normally distributed.
 
+<img src = "./resources/normal_posterior.png">
 
 ### Pros:
 
