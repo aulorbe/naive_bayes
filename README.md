@@ -5,10 +5,24 @@ Suppose we are using an API to gather articles from a news website and grabbing 
 
 We have a problem though! Only some of our articles have their category (music or politics). Is there a way we can use Machine Learning to help us label our data quickly?
 
-Let's start with one example phrase:
+-------------------------------
+### Here are our articles
+#### Music Articles:
+
+* 'the song was popular'
+* 'band leaders disagreed on sound'
+* 'played for a sold out arena stadium'
+
+#### Politics Articles
+
+* 'world leaders met lask week'
+* 'the election was close'
+* 'the officials agreed on a compromise'
+--------------------------------------------------------
+Let's try and predict one example phrase:
 
 
-#### "world leaders agreed to fund the stadium"
+* "world leaders agreed to fund the stadium"
 
 How can we make a model that labels this for us rather than having to go through by hand?
 
@@ -449,7 +463,7 @@ There is also the Gaussian Naive Bayes Classifier, which assumes that the featur
 ### Cons:
 
 * On the other side naive Bayes is also known as a bad estimator, so the probability outputs from predict_proba are not to be taken too seriously.
-* Another limitation of Naive Bayes is the assumption of independent predictors. In real life, it is almost impossible that we get a set of predictors which are completely independent.
+* We are assuming of independent predictors, but in real life, it is almost impossible that we get a set of predictors which are completely independent. (amazingly, still works a lot of the time though!)
 
 ### Using Naive Bayes in sklearn
 
